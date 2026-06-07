@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact | ShotByRithu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">
+      <div class="logo-mark">SBR</div>
+      <div class="logo-text">SHOT BY RITHU</div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="portfolio/index.html">Portfolio</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="contact">
+  <div class="container contact-inner fade-in">
+
+    <h2 class="section-title">Send an Enquiry</h2>
+    <p class="section-subtitle" style="margin-bottom: 25px;">
+      Tell me about your event or shoot — I’ll get back to you shortly.
+    </p>
+
+    <!-- IMAGE COLUMN -->
+    <div class="contact-image">
+      <img src="Images/IMG_2544.PNG" alt="ShotByRithu">
+    </div>
+
+    <!-- FORM COLUMN -->
+    <form id="contactForm" action="https://formsubmit.co/rithu.sbr21@gmail.com" method="POST">
+
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_subject" value="New Enquiry from ShotByRithu Website">
+
+      <label>Your Name *</label>
+      <input type="text" name="name" required placeholder="Enter your full name">
+
+      <label>Email Address *</label>
+      <input type="email" name="email" required placeholder="example@email.com">
+
+      <label>Type of Event *</label>
+      <select name="event_type" required>
+        <option value="">Choose an option</option>
+        <option>Birthday</option>
+        <option>Ceremony</option>
+        <option>Photoshoot</option>
+        <option>Casual Event</option>
+        <option>Casual Celebration</option>
+        <option>Other</option>
+      </select>
+
+      <label>Event Date(s)</label>
+      <input type="text" name="event_date" placeholder="e.g. 12 July or 12–14 July">
+
+      <label>Event Time</label>
+      <input type="text" name="event_time" placeholder="e.g. 5pm – 10pm">
+
+      <label>Location / Venue *</label>
+      <input type="text" name="location" required placeholder="Where is the event taking place?">
+
+      <label>Estimated Number of Guests *</label>
+      <select name="guests" required>
+        <option value="">Choose an option</option>
+        <option>Less than 50</option>
+        <option>50 to 100</option>
+        <option>100 to 150</option>
+        <option>150+</option>
+      </select>
+
+      <label>Additional Details</label>
+      <textarea name="message" placeholder="Anything else you'd like me to know?"></textarea>
+
+      <button class="btn-primary btn-full" style="margin-top: 20px;">SEND ENQUIRY</button>
+
+    </form>
+
+    <!-- SUCCESS MESSAGE -->
+    <div id="successMessage" class="fade-in" style="
+      display: none;
+      margin-top: 30px;
+      padding: 20px;
+      background: #0f0f0f;
+      border: 1px solid #333;
+      border-radius: 10px;
+      color: #fff;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 600;
+      opacity: 0;
+    ">
+      Thanks for your enquiry!<br>
+      I’ll get back to you soon.
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <div>© 2026 ShotByRithu</div>
+
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="portfolio/index.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div style="margin-top: 10px;">
+      <a href="https://instagram.com/shotbyrithu" target="_blank" style="color: #fff; opacity: 0.8;">
+        Instagram: @shotbyrithu
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById("contactForm");
+  const successBox = document.getElementById("successMessage");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form)
+    })
+    .then(() => {
+      form.style.display = "none";
+      successBox.style.display = "block";
+      setTimeout(() => {
+        successBox.style.opacity = "1";
+      }, 50);
+    })
+    .catch(() => {
+      alert("Something went wrong. Please try again.");
+    });
+  });
+</script>
+
+</body>
+</html>

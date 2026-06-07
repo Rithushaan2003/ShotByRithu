@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rithushaan’s 23rd Birthday | ShotByRithu</title>
+  <link rel="stylesheet" href="../../style.css?v=4">
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">
+      <div class="logo-mark">SBR</div>
+      <div class="logo-text">SHOT BY RITHU</div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="../../index.html">Home</a>
+      <a href="../../about.html">About</a>
+      <a href="../index.html">Portfolio</a>
+      <a href="../../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="portfolio">
+  <div class="container">
+
+    <div class="section-header">
+      <div class="section-kicker">Birthday Album</div>
+      <h2 class="section-title">Rithushaan’s 23rd Birthday</h2>
+      <p class="section-subtitle">A cool birthday celebration captured by ShotByRithu.</p>
+    </div>
+
+    <div class="album-gallery">
+
+      <div class="album-photo">
+        <img src="../../Images/birthdays/rithu23/IMG_9472.JPG" alt="">
+      </div>
+
+      <div class="album-photo">
+        <img src="../../Images/birthdays/rithu23/IMG_9471.JPEG" alt="">
+      </div>
+
+      <div class="album-photo">
+        <img src="../../Images/birthdays/rithu23/IMG_9457.JPG" alt="">
+      </div>
+
+      <div class="album-photo">
+        <img src="../../Images/birthdays/rithu23/IMG_9453.JPG" alt="">
+      </div>
+
+      <div class="album-photo">
+        <img src="../../Images/birthdays/rithu23/IMG_9465.JPG" alt="">
+      </div>
+
+      <div class="album-photo">
+        <img src="../../Images/birthdays/rithu23/IMG_9469.JPG" alt="">
+      </div>
+
+      <div class="album-photo">
+        <img src="../../Images/birthdays/rithu23/IMG_9459.JPG" alt="">
+      </div>
+
+      <div class="album-photo">
+        <img src="../../Images/birthdays/rithu23/IMG_9448.JPG" alt="">
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- LIGHTBOX WITH ARROWS -->
+<div id="lightbox" class="lightbox">
+  <span class="lightbox-arrow left">&#10094;</span>
+  <img id="lightbox-img" src="">
+  <span class="lightbox-arrow right">&#10095;</span>
+</div>
+
+<footer>
+  <div class="container footer-inner">
+    <div>© 2026 ShotByRithu</div>
+
+    <div class="footer-links">
+      <a href="../../index.html">Home</a>
+      <a href="../../about.html">About</a>
+      <a href="../index.html">Portfolio</a>
+      <a href="../../contact.html">Contact</a>
+    </div>
+
+    <div style="margin-top: 10px;">
+      <a href="https://instagram.com/shotbyrithu" target="_blank" style="color: #fff; opacity: 0.8;">
+        Instagram: @shotbyrithu
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- FULL LIGHTBOX SCRIPT -->
+<script>
+  const images = Array.from(document.querySelectorAll(".album-photo img"));
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const leftArrow = document.querySelector(".lightbox-arrow.left");
+  const rightArrow = document.querySelector(".lightbox-arrow.right");
+
+  let currentIndex = 0;
+
+  images.forEach((img, index) => {
+    img.addEventListener("click", () => {
+      currentIndex = index;
+      showImage();
+      lightbox.style.display = "flex";
+    });
+  });
+
+  function showImage() {
+    lightboxImg.src = images[currentIndex].src;
+  }
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      lightbox.style.display = "none";
+    }
+  });
+
+  rightArrow.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage();
+  });
+
+  leftArrow.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.style.display === "flex") {
+      if (e.key === "ArrowRight") {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage();
+      }
+      if (e.key === "ArrowLeft") {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage();
+      }
+      if (e.key === "Escape") {
+        lightbox.style.display = "none";
+      }
+    }
+  });
+
+  let startX = 0;
+
+  lightbox.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  lightbox.addEventListener("touchend", (e) => {
+    let endX = e.changedTouches[0].clientX;
+    let diff = startX - endX;
+
+    if (diff > 50) {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage();
+    } else if (diff < -50) {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage();
+    }
+  });
+</script>
+
+</body>
+</html>
