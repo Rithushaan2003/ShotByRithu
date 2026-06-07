@@ -388,6 +388,14 @@ section {
 
 /* PORTFOLIO */
 .portfolio {
+  height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.portfolio {
   background: var(--bg-section);
 }
 
