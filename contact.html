@@ -38,76 +38,80 @@
 
     <h2 class="section-title">Get in Touch</h2>
 
-    <p class="section-subtitle" style="margin-bottom: 25px;">
+    <p class="section-subtitle" id="contactSubtitle" style="margin-bottom: 25px;">
       Tell me about your event or shoot — I’ll get back to you shortly.
     </p>
 
-    <!-- IMAGE COLUMN -->
+    <!-- LEFT SIDE IMAGE -->
     <div class="contact-image">
       <img src="Images/IMG_2544.PNG" alt="ShotByRithu">
     </div>
 
-    <!-- FORM COLUMN -->
-    <form id="contactForm">
+    <!-- RIGHT SIDE COLUMN (form + success message) -->
+    <div class="contact-right">
 
-      <label>Your Name *</label>
-      <input type="text" name="name" required placeholder="Enter your full name">
+      <!-- FORM -->
+      <form id="contactForm">
 
-      <label>Email Address *</label>
-      <input type="email" name="email" required placeholder="example@email.com">
+        <label>Your Name *</label>
+        <input type="text" name="name" required placeholder="Enter your full name">
 
-      <label>Type of Event *</label>
-      <select name="event_type" required>
-        <option value="">Choose an option</option>
-        <option>Birthday</option>
-        <option>Ceremony</option>
-        <option>Photoshoot</option>
-        <option>Casual Event</option>
-        <option>Casual Celebration</option>
-        <option>Other (please specify in Additional Details)</option>
-      </select>
+        <label>Email Address *</label>
+        <input type="email" name="email" required placeholder="example@email.com">
 
-      <label>Event Date(s)</label>
-      <input type="text" name="event_date" placeholder="e.g. 12 July or 12–14 July">
+        <label>Type of Event *</label>
+        <select name="event_type" required>
+          <option value="">Choose an option</option>
+          <option>Birthday</option>
+          <option>Ceremony</option>
+          <option>Photoshoot</option>
+          <option>Casual Event</option>
+          <option>Casual Celebration</option>
+          <option>Other (please specify in Additional Details)</option>
+        </select>
 
-      <label>Event Time</label>
-      <input type="text" name="event_time" placeholder="e.g. 5pm – 10pm">
+        <label>Event Date(s)</label>
+        <input type="text" name="event_date" placeholder="e.g. 12 July or 12–14 July">
 
-      <label>Location / Venue *</label>
-      <input type="text" name="location" required placeholder="Where is the event taking place?">
+        <label>Event Time</label>
+        <input type="text" name="event_time" placeholder="e.g. 5pm – 10pm">
 
-      <label>Estimated Number of Guests *</label>
-      <select name="guests" required>
-        <option value="">Choose an option</option>
-        <option>Less than 50</option>
-        <option>50 to 100</option>
-        <option>100 to 150</option>
-        <option>150+</option>
-      </select>
+        <label>Location / Venue *</label>
+        <input type="text" name="location" required placeholder="Where is the event taking place?">
 
-      <label>Additional Details</label>
-      <textarea name="message" placeholder="Anything else you'd like me to know?"></textarea>
+        <label>Estimated Number of Guests *</label>
+        <select name="guests" required>
+          <option value="">Choose an option</option>
+          <option>Less than 50</option>
+          <option>50 to 100</option>
+          <option>100 to 150</option>
+          <option>150+</option>
+        </select>
 
-      <button class="btn-primary btn-full" style="margin-top: 20px;">SEND ENQUIRY</button>
+        <label>Additional Details</label>
+        <textarea name="message" placeholder="Anything else you'd like me to know?"></textarea>
 
-    </form>
+        <button class="btn-primary btn-full" style="margin-top: 20px;">SEND ENQUIRY</button>
 
-    <!-- ⭐ SUCCESS MESSAGE MOVED HERE ⭐ -->
-    <div id="successMessage" class="fade-in" style="
-      display: none;
-      margin-top: 30px;
-      padding: 20px;
-      background: #0f0f0f;
-      border: 1px solid #333;
-      border-radius: 10px;
-      color: #fff;
-      text-align: center;
-      font-size: 18px;
-      font-weight: 600;
-      opacity: 0;
-    ">
-      Thanks for your enquiry!<br>
-      I’ll get back to you soon.
+      </form>
+
+      <!-- SUCCESS MESSAGE -->
+      <div id="successMessage" class="fade-in" style="
+        display: none;
+        padding: 20px;
+        background: #0f0f0f;
+        border: 1px solid #333;
+        border-radius: 10px;
+        color: #fff;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        opacity: 0;
+      ">
+        Thanks for your enquiry!<br>
+        I’ll get back to you soon.
+      </div>
+
     </div>
 
   </div>
@@ -137,6 +141,7 @@
 <script>
   const form = document.getElementById("contactForm");
   const successBox = document.getElementById("successMessage");
+  const subtitle = document.getElementById("contactSubtitle");
 
   form.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -148,11 +153,9 @@
         form.style.display = "none";
 
         // hide subtitle
-        document.querySelectorAll(".section-subtitle").forEach(el => {
-          el.style.display = "none";
-        });
+        subtitle.style.display = "none";
 
-        // show success message in same spot
+        // show success message on the RIGHT side
         successBox.style.display = "block";
         setTimeout(() => {
           successBox.style.opacity = "1";

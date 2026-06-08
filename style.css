@@ -492,6 +492,13 @@ section {
   align-items: flex-start;
 }
 
+/* RIGHT SIDE COLUMN (form + success message) */
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 form {
   display: grid;
   gap: 14px;
@@ -562,6 +569,7 @@ textarea {
   box-shadow: 0 0 40px rgba(0,0,0,0.6);
 }
 
+/* MOBILE */
 @media (max-width: 768px) {
   .contact-inner {
     grid-template-columns: 1fr;
