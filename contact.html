@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <title>Contact | ShotByRithu</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- EMAILJS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("rDfE1E9AolJZZfimb");
+    })();
+  </script>
 </head>
 
 <body>
@@ -38,11 +46,7 @@
     </div>
 
     <!-- FORM COLUMN -->
-    <form id="contactForm" action="https://formsubmit.co/rithu.sbr21@gmail.com" method="POST">
-
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_subject" value="New Enquiry from ShotByRithu Website">
+    <form id="contactForm">
 
       <label>Your Name *</label>
       <input type="text" name="name" required placeholder="Enter your full name">
@@ -126,6 +130,7 @@
   </div>
 </footer>
 
+<!-- EMAILJS FORM HANDLER -->
 <script>
   const form = document.getElementById("contactForm");
   const successBox = document.getElementById("successMessage");
@@ -133,20 +138,18 @@
   form.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    fetch(form.action, {
-      method: "POST",
-      body: new FormData(form)
-    })
-    .then(() => {
-      form.style.display = "none";
-      successBox.style.display = "block";
-      setTimeout(() => {
-        successBox.style.opacity = "1";
-      }, 50);
-    })
-    .catch(() => {
-      alert("Something went wrong. Please try again.");
-    });
+    emailjs.sendForm("service_swis078", "template_ermgndd", form)
+      .then(() => {
+        form.style.display = "none";
+        successBox.style.display = "block";
+        setTimeout(() => {
+          successBox.style.opacity = "1";
+        }, 50);
+      })
+      .catch((error) => {
+        console.error("EmailJS Error:", error);
+        alert("Something went wrong. Please try again.");
+      });
   });
 </script>
 
