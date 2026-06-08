@@ -38,12 +38,11 @@
 
     <h2 class="section-title">Get in Touch</h2>
 
-    <!-- ⭐ SUBTITLE WITH ID ⭐ -->
-    <p id="subtitle" class="section-subtitle" style="margin-bottom: 25px;">
+    <p class="section-subtitle" style="margin-bottom: 25px;">
       Tell me about your event or shoot — I’ll get back to you shortly.
     </p>
 
-    <!-- IMAGE COLUMN (STAYS VISIBLE) -->
+    <!-- IMAGE COLUMN -->
     <div class="contact-image">
       <img src="Images/IMG_2544.PNG" alt="ShotByRithu">
     </div>
@@ -138,21 +137,22 @@
 <script>
   const form = document.getElementById("contactForm");
   const successBox = document.getElementById("successMessage");
-  const subtitle = document.getElementById("subtitle");
 
   form.addEventListener("submit", function(e) {
     e.preventDefault();
 
     emailjs.sendForm("service_swis078", "template_ermgndd", form)
       .then(() => {
-
-        // ⭐ HIDE ONLY THE FORM ⭐
+        // hide form
         form.style.display = "none";
 
-        // ⭐ HIDE ONLY THE SUBTITLE ⭐
-        subtitle.style.display = "none";
+        // hide subtitle (first .section-subtitle)
+        const subtitle = document.querySelector(".section-subtitle");
+        if (subtitle) {
+          subtitle.style.display = "none";
+        }
 
-        // ⭐ SHOW SUCCESS MESSAGE ⭐
+        // show success message
         successBox.style.display = "block";
         setTimeout(() => {
           successBox.style.opacity = "1";
