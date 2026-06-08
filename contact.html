@@ -34,16 +34,16 @@
 
 <section class="contact">
 
-  <!-- ⭐ THIS WHOLE CONTAINER WILL HIDE AFTER SUBMIT ⭐ -->
-  <div id="contactContainer" class="container contact-inner fade-in">
+  <div class="container contact-inner fade-in">
 
     <h2 class="section-title">Get in Touch</h2>
 
-    <p class="section-subtitle" style="margin-bottom: 25px;">
+    <!-- ⭐ SUBTITLE WITH ID ⭐ -->
+    <p id="subtitle" class="section-subtitle" style="margin-bottom: 25px;">
       Tell me about your event or shoot — I’ll get back to you shortly.
     </p>
 
-    <!-- IMAGE COLUMN -->
+    <!-- IMAGE COLUMN (STAYS VISIBLE) -->
     <div class="contact-image">
       <img src="Images/IMG_2544.PNG" alt="ShotByRithu">
     </div>
@@ -138,6 +138,7 @@
 <script>
   const form = document.getElementById("contactForm");
   const successBox = document.getElementById("successMessage");
+  const subtitle = document.getElementById("subtitle");
 
   form.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -145,8 +146,11 @@
     emailjs.sendForm("service_swis078", "template_ermgndd", form)
       .then(() => {
 
-        // ⭐ HIDE THE ENTIRE CONTACT SECTION ⭐
-        document.getElementById("contactContainer").style.display = "none";
+        // ⭐ HIDE ONLY THE FORM ⭐
+        form.style.display = "none";
+
+        // ⭐ HIDE ONLY THE SUBTITLE ⭐
+        subtitle.style.display = "none";
 
         // ⭐ SHOW SUCCESS MESSAGE ⭐
         successBox.style.display = "block";
