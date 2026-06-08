@@ -33,10 +33,13 @@
 </header>
 
 <section class="contact">
-  <div class="container contact-inner fade-in">
+
+  <!-- ⭐ THIS WHOLE CONTAINER WILL HIDE AFTER SUBMIT ⭐ -->
+  <div id="contactContainer" class="container contact-inner fade-in">
 
     <h2 class="section-title">Get in Touch</h2>
-    <p id="subtitle" class="section-subtitle" style="margin-bottom: 25px;">
+
+    <p class="section-subtitle" style="margin-bottom: 25px;">
       Tell me about your event or shoot — I’ll get back to you shortly.
     </p>
 
@@ -90,25 +93,26 @@
 
     </form>
 
-    <!-- SUCCESS MESSAGE -->
-    <div id="successMessage" class="fade-in" style="
-      display: none;
-      margin-top: 30px;
-      padding: 20px;
-      background: #0f0f0f;
-      border: 1px solid #333;
-      border-radius: 10px;
-      color: #fff;
-      text-align: center;
-      font-size: 18px;
-      font-weight: 600;
-      opacity: 0;
-    ">
-      Thanks for your enquiry!<br>
-      I’ll get back to you soon.
-    </div>
-
   </div>
+
+  <!-- SUCCESS MESSAGE -->
+  <div id="successMessage" class="fade-in" style="
+    display: none;
+    margin-top: 30px;
+    padding: 20px;
+    background: #0f0f0f;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    opacity: 0;
+  ">
+    Thanks for your enquiry!<br>
+    I’ll get back to you soon.
+  </div>
+
 </section>
 
 <footer>
@@ -140,8 +144,11 @@
 
     emailjs.sendForm("service_swis078", "template_ermgndd", form)
       .then(() => {
-        form.style.display = "none";
-        document.getElementById("subtitle").style.display = "none";
+
+        // ⭐ HIDE THE ENTIRE CONTACT SECTION ⭐
+        document.getElementById("contactContainer").style.display = "none";
+
+        // ⭐ SHOW SUCCESS MESSAGE ⭐
         successBox.style.display = "block";
         setTimeout(() => {
           successBox.style.opacity = "1";
