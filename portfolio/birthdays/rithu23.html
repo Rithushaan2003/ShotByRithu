@@ -4,6 +4,20 @@
   <meta charset="UTF-8">
   <title>Rithushaan’s 23rd Birthday | ShotByRithu</title>
   <link rel="stylesheet" href="../../style.css?v=4">
+
+  <style>
+    /* Fade-in + lift animation */
+    .fade-photo {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-photo.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 
 <body>
@@ -35,35 +49,35 @@
 
     <div class="album-gallery">
 
-      <div class="album-photo">
+      <div class="album-photo fade-photo">
         <img src="../../Images/birthdays/rithu23/IMG_9472.JPG" alt="">
       </div>
 
-      <div class="album-photo">
+      <div class="album-photo fade-photo">
         <img src="../../Images/birthdays/rithu23/IMG_9471.JPEG" alt="">
       </div>
 
-      <div class="album-photo">
+      <div class="album-photo fade-photo">
         <img src="../../Images/birthdays/rithu23/IMG_9457.JPG" alt="">
       </div>
 
-      <div class="album-photo">
+      <div class="album-photo fade-photo">
         <img src="../../Images/birthdays/rithu23/IMG_9453.JPG" alt="">
       </div>
 
-      <div class="album-photo">
+      <div class="album-photo fade-photo">
         <img src="../../Images/birthdays/rithu23/IMG_9465.JPG" alt="">
       </div>
 
-      <div class="album-photo">
+      <div class="album-photo fade-photo">
         <img src="../../Images/birthdays/rithu23/IMG_9469.JPG" alt="">
       </div>
 
-      <div class="album-photo">
+      <div class="album-photo fade-photo">
         <img src="../../Images/birthdays/rithu23/IMG_9459.JPG" alt="">
       </div>
 
-      <div class="album-photo">
+      <div class="album-photo fade-photo">
         <img src="../../Images/birthdays/rithu23/IMG_9448.JPG" alt="">
       </div>
 
@@ -170,6 +184,21 @@
       showImage();
     }
   });
+</script>
+
+<!-- ANIMATION SCRIPT -->
+<script>
+  const photos = document.querySelectorAll('.fade-photo');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  photos.forEach(photo => observer.observe(photo));
 </script>
 
 </body>
