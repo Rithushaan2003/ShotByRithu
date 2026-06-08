@@ -36,7 +36,7 @@
   <div class="container contact-inner fade-in">
 
     <h2 class="section-title">Get in Touch</h2>
-    <p class="section-subtitle" style="margin-bottom: 25px;">
+    <p id="subtitle" class="section-subtitle" style="margin-bottom: 25px;">
       Tell me about your event or shoot — I’ll get back to you shortly.
     </p>
 
@@ -141,6 +141,7 @@
     emailjs.sendForm("service_swis078", "template_ermgndd", form)
       .then(() => {
         form.style.display = "none";
+        document.getElementById("subtitle").style.display = "none";
         successBox.style.display = "block";
         setTimeout(() => {
           successBox.style.opacity = "1";
