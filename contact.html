@@ -92,7 +92,7 @@
 
     </form>
 
-    <!-- SUCCESS MESSAGE (now inside same container) -->
+    <!-- ⭐ SUCCESS MESSAGE MOVED HERE ⭐ -->
     <div id="successMessage" class="fade-in" style="
       display: none;
       margin-top: 30px;
@@ -143,19 +143,21 @@
 
     emailjs.sendForm("service_swis078", "template_ermgndd", form)
       .then(() => {
+
         // hide form
         form.style.display = "none";
 
-        // hide ALL subtitles
+        // hide subtitle
         document.querySelectorAll(".section-subtitle").forEach(el => {
           el.style.display = "none";
         });
 
-        // show success message in same area
+        // show success message in same spot
         successBox.style.display = "block";
         setTimeout(() => {
           successBox.style.opacity = "1";
         }, 50);
+
       })
       .catch((error) => {
         console.error("EmailJS Error:", error);
