@@ -692,7 +692,6 @@ footer {
   padding: 10px 0;
 }
 
-/* PHOTO ITEM (with animation) */
 .album-photo {
   break-inside: avoid;
   margin-bottom: 18px;
@@ -701,16 +700,6 @@ footer {
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: #020308;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  /* ⭐ ANIMATION START STATE */
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-/* ⭐ ANIMATION END STATE */
-.album-photo.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .album-photo img {
@@ -719,6 +708,48 @@ footer {
   display: block;
   border-radius: 14px;
   object-fit: cover;
+}
+
+/* ALBUM CARD */
+.album-card {
+  display: flex;
+  flex-direction: column;
+  background: #0a0a0f;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.album-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(0, 150, 255, 0.25);
+}
+
+.album-thumb {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.album-info {
+  padding: 16px;
+}
+
+.album-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.album-info p {
+  margin: 0;
+  opacity: 0.7;
+  font-size: 14px;
 }
 
 /* Hover effect */
