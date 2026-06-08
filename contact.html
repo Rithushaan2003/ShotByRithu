@@ -92,24 +92,24 @@
 
     </form>
 
-  </div>
+    <!-- SUCCESS MESSAGE (now inside same container) -->
+    <div id="successMessage" class="fade-in" style="
+      display: none;
+      margin-top: 30px;
+      padding: 20px;
+      background: #0f0f0f;
+      border: 1px solid #333;
+      border-radius: 10px;
+      color: #fff;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 600;
+      opacity: 0;
+    ">
+      Thanks for your enquiry!<br>
+      I’ll get back to you soon.
+    </div>
 
-  <!-- SUCCESS MESSAGE -->
-  <div id="successMessage" class="fade-in" style="
-    display: none;
-    margin-top: 30px;
-    padding: 20px;
-    background: #0f0f0f;
-    border: 1px solid #333;
-    border-radius: 10px;
-    color: #fff;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 600;
-    opacity: 0;
-  ">
-    Thanks for your enquiry!<br>
-    I’ll get back to you soon.
   </div>
 
 </section>
@@ -146,13 +146,12 @@
         // hide form
         form.style.display = "none";
 
-        // hide subtitle (first .section-subtitle)
-        const subtitle = document.querySelector(".section-subtitle");
-        if (subtitle) {
-          subtitle.style.display = "none";
-        }
+        // hide ALL subtitles
+        document.querySelectorAll(".section-subtitle").forEach(el => {
+          el.style.display = "none";
+        });
 
-        // show success message
+        // show success message in same area
         successBox.style.display = "block";
         setTimeout(() => {
           successBox.style.opacity = "1";
