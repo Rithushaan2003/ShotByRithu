@@ -95,7 +95,7 @@
 
       </form>
 
-      <!-- SUCCESS MESSAGE -->
+      <!-- SUCCESS MESSAGE (right side) -->
       <div id="successMessage" class="fade-in" style="
         display: none;
         padding: 20px;
@@ -146,25 +146,20 @@
   form.addEventListener("submit", function(e) {
     e.preventDefault();
 
+    // Immediately update UI (no waiting on EmailJS)
+    form.style.display = "none";
+    if (subtitle) subtitle.style.display = "none";
+
+    successBox.style.display = "block";
+    setTimeout(() => {
+      successBox.style.opacity = "1";
+    }, 50);
+
+    // Try sending email in background
     emailjs.sendForm("service_swis078", "template_ermgndd", form)
-      .then(() => {
-
-        // hide form
-        form.style.display = "none";
-
-        // hide subtitle
-        subtitle.style.display = "none";
-
-        // show success message on the RIGHT side
-        successBox.style.display = "block";
-        setTimeout(() => {
-          successBox.style.opacity = "1";
-        }, 50);
-
-      })
       .catch((error) => {
         console.error("EmailJS Error:", error);
-        alert("Something went wrong. Please try again.");
+        // Optional: show a small error somewhere if you want
       });
   });
 </script>
