@@ -23,11 +23,12 @@
       <div class="logo-text">SHOT BY RITHU</div>
     </div>
 
+    <!-- FIXED NAVBAR -->
     <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="portfolio/index.html">Portfolio</a>
-      <a href="contact.html" class="active">Contact</a>
+      <a href="../index.html">Home</a>
+      <a href="../about/index.html">About</a>
+      <a href="../portfolio/index.html">Portfolio</a>
+      <a href="./index.html" class="active">Contact</a>
     </nav>
   </div>
 </header>
@@ -95,7 +96,7 @@
 
       </form>
 
-      <!-- SUCCESS MESSAGE (right side) -->
+      <!-- SUCCESS MESSAGE -->
       <div id="successMessage" class="fade-in" style="
         display: none;
         padding: 20px;
@@ -122,11 +123,12 @@
   <div class="container footer-inner">
     <div>© 2026 ShotByRithu</div>
 
+    <!-- FIXED FOOTER LINKS -->
     <div class="footer-links">
       <a href="../index.html">Home</a>
-      <a href="../about.html">About</a>
+      <a href="../about/index.html">About</a>
       <a href="../portfolio/index.html">Portfolio</a>
-      <a href="./contact.html">Contact</a>
+      <a href="./index.html">Contact</a>
     </div>
 
     <div style="margin-top: 10px;">
@@ -146,7 +148,6 @@
   form.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    // Immediately update UI (no waiting on EmailJS)
     form.style.display = "none";
     if (subtitle) subtitle.style.display = "none";
 
@@ -155,11 +156,9 @@
       successBox.style.opacity = "1";
     }, 50);
 
-    // Try sending email in background
     emailjs.sendForm("service_swis078", "template_ermgndd", form)
       .catch((error) => {
         console.error("EmailJS Error:", error);
-        // Optional: show a small error somewhere if you want
       });
   });
 </script>
